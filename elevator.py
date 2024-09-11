@@ -10,6 +10,7 @@ class Housing:
 class Elevator:
 
   def __init__(self):
+    self.current_floor = 1
     self.open = False
 
   def is_open(self):
@@ -29,4 +30,5 @@ class Button:
     self.floor = floor
 
   def press(self):
+    self.floor.housing.car.current_floor = 1
     self.floor.housing.car.open = True
