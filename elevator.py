@@ -11,7 +11,10 @@ class Housing:
 class Elevator:
 
   def __init__(self):
-    self.door = Door()
+    self.open = False
+
+  def is_open(self):
+    return self.open
 
 
 class Floor:
@@ -27,13 +30,4 @@ class Button:
     self.floor = floor
 
   def press(self):
-    self.floor.housing.elevator.door.open = True
-
-
-class Door:
-
-  def __init__(self):
-    self.open = False
-
-  def is_open(self):
-    return self.open
+    self.floor.housing.elevator.open = True

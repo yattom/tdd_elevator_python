@@ -11,7 +11,7 @@ def test_1Fにエレベーターがいて1Fホールの上ボタンを押す():
   first_floor.button.press()
 
   # assert 検証
-  assert elevator.door.is_open() == True
+  assert elevator.is_open() == True
 
 
 def test_1Fにエレベーターがいてドアが閉まっている():
@@ -22,4 +22,4 @@ def test_1Fにエレベーターがいてドアが閉まっている():
   # act 実行
 
   # assert 検証
-  assert elevator.door.is_open() == False
+  assert elevator.is_open() == False
