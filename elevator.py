@@ -2,7 +2,7 @@
 class Housing:
 
   def __init__(self):
-    self.elevator = Elevator()
+    self.car = Elevator()
 
   def get_floor(self, floor):
     return Floor(self)
@@ -30,4 +30,4 @@ class Button:
     self.floor = floor
 
   def press(self):
-    self.floor.housing.elevator.open = True
+    self.floor.housing.car.open = True
