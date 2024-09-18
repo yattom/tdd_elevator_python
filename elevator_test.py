@@ -1,4 +1,4 @@
-from elevator import Housing, Floor, Button
+from elevator import Housing, Floor, Button, Car
 
 
 def test_1Fにエレベーターがいて1Fホールの上ボタンを押す():
@@ -22,8 +22,7 @@ def test_1Fにエレベーターがいてドアが閉まっている():
   # act 実行
 
   # assert 検証
-  assert car.is_open() == False
-  assert car.current_floor == housing.get_floor(1)
+  assert_指定した階でドアが閉まっている(floor=housing.get_floor(1), car=car)
 
 
 def test_2Fにエレベーターがいて1Fホールの上ボタンを押す():
@@ -38,12 +37,7 @@ def test_2Fにエレベーターがいて1Fホールの上ボタンを押す():
   button.press()
 
   # assert 検証
-  assert_呼んだ階でドアが開いている(呼んだ階=first_floor, car=car)
-
-
-def assert_呼んだ階でドアが開いている(呼んだ階: Floor, car):
-  assert car.current_floor == 呼んだ階
-  assert car.is_open() == True
+  assert_指定した階でドアが開いている(floor=first_floor, car=car)
 
 
 def test_1Fにエレベーターがいて2Fホールの上ボタンを押す():
@@ -57,4 +51,15 @@ def test_1Fにエレベーターがいて2Fホールの上ボタンを押す():
   button.press()
 
   # assert 検証
-  assert_呼んだ階でドアが開いている(呼んだ階=second_floor, car=car)
+  assert_指定した階でドアが開いている(floor=second_floor, car=car)
+  # assert_エレベーターの状態("2-開-停止", car)
+
+
+def assert_指定した階でドアが開いている(floor: Floor, car):
+  assert car.current_floor == floor
+  assert car.is_open() == True
+
+
+def assert_指定した階でドアが閉まっている(floor: Floor, car: Car):
+  assert car.current_floor == floor
+  assert car.is_open() == False
