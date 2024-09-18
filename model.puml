@@ -1,0 +1,13 @@
+@startuml
+class Housing {
+}
+
+class Elevator {
+}
+
+Housing -> Elevator
+Housing -> Floor
+
+Button -> Floor
+
+@enduml

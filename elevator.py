@@ -1,9 +1,8 @@
-# TODO: 次回はリファクタリングから
 class Housing:
 
   def __init__(self):
     self.floors = {}
-    self.car = Elevator(self)
+    self.car = Car(self)
 
   def get_floor(self, floor_number: int):
     if floor_number not in self.floors.keys():
@@ -11,9 +10,9 @@ class Housing:
     return self.floors[floor_number]
 
 
-class Elevator:
+class Car:
 
-  def __init__(self, housing):
+  def __init__(self, housing: Housing):
     self.current_floor = housing.get_floor(1)
     self._open = False
 
@@ -23,21 +22,20 @@ class Elevator:
   def open(self):
     self._open = True
 
-  def move_to_floor(self, floor):
+  def move_to_floor(self, floor: 'Floor'):
     self.current_floor = floor
 
 
 class Floor:
 
-  def __init__(self, housing, floor):
-    self.button = Button(self)
+  def __init__(self, housing: Housing, floor_number: int):
     self.housing = housing
-    self.floor_number = floor
+    self.floor_number = floor_number
 
 
 class Button:
 
-  def __init__(self, floor):
+  def __init__(self, floor: Floor):
     self.floor = floor
 
   def press(self):
